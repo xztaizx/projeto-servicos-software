@@ -1,6 +1,8 @@
-fastapi
-uvicorn
-transformers
-torch
-pdfplumber
-python-multipart
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+transformers==4.41.2
+torch==2.3.0
+pdfplumber==0.11.0
+python-multipart==0.0.9
+sentencepiece
+accelerate
