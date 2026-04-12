@@ -1,17 +1,13 @@
-# imagem base
-FROM python:3.11
-
-# define pasta dentro do container
+FROM python:3.10
+ 
 WORKDIR /app
-
-# copia dependências
+ 
 COPY requirements.txt .
-
-# instala libs
+ 
 RUN pip install --no-cache-dir -r requirements.txt
-
-# copia código
-COPY . .
-
-# comando que roda o app
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+ 
+COPY ./app ./app
+ 
+WORKDIR /app/app
+ 
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
