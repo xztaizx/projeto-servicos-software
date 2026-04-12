@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PDF Summarizer</title>
+</head>
+ 
+<body>
+ 
+<h2>PDF Summarizer</h2>
+ 
+<input type="file" id="fileInput" />
+ 
+<button onclick="sendFile()">Enviar PDF</button>
+ 
+<h3>Resumo</h3>
+ 
+<p id="result"></p>
+ 
+<script>
+ 
+async function sendFile(){
+ 
+    const fileInput = document.getElementById("fileInput")
+ 
+    const formData = new FormData()
+ 
+    formData.append("file", fileInput.files[0])
+ 
+    const response = await fetch("http://localhost:8000/summarize",{
+
+        method:"POST",
+
+        body:formData
+
+    })
+ 
+    const data = await response.json()
+ 
+    document.getElementById("result").innerText = data.summary
+
+}
+ 
+</script>
+ 
+</body>
+</html>
+ 

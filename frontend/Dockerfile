@@ -2,10 +2,8 @@ FROM node:18
  
 WORKDIR /app
  
-COPY package.json .
+RUN npm install -g serve
  
-RUN npm install
+COPY ./src .
  
-COPY ./src ./src
- 
-CMD ["npx", "serve"]
+CMD ["serve", "-s", ".", "-l", "3000"]
